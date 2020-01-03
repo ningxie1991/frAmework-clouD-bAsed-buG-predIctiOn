@@ -3,6 +3,8 @@ package com.mycompany.dataextractor;
 import com.mycompany.model.CloudProjectsData;
 import com.mycompany.model.MatrixData;
 import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.ResetCommand;
+import org.eclipse.jgit.api.errors.CheckoutConflictException;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.api.errors.JGitInternalException;
 import org.eclipse.jgit.internal.storage.file.FileRepository;
@@ -33,11 +35,22 @@ public class ProjectReleases {
         String repoPath = args[0];
 //        String repoPath = "C:/HadoopProject/hadoop/.git";
 //        String repoPath = "C:/Users/Urooj Isar/Documents/panasol/Cloud Projects/hbase/.git";
-        List<String> requiredtags = new ArrayList<String>();
+//        String repoPath = "C:/Users/Urooj Isar/Documents/panasol/Cloud projects/cloudstack/.git";
+        List<CloudProjectsData> requiredtags =  new ArrayList<>();
+        List<String> reqtags = new ArrayList<String>();
         repo = new FileRepository(repoPath);
         git = new Git(repo);
-        //requiredtags = getSpecificReleaseTags(repo).get(0); // Will add dates(Aug 2018 etc to parameters)
-        checkoutAndGenerateCSV(requiredtags, repo, git, repoPath);
+        String gitHubBaseURL = "https://github.com/";
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date startDate = sdf.parse("01/08/2018");
+        Date endDate = sdf.parse("31/08/2019");
+//        requiredtags = getSpecificReleaseTags(repo).get(0); // Will add dates(Aug 2018 etc to parameters)
+        requiredtags = getSpecificReleaseTags(repo, repoPath.substring(repoPath.indexOf("/", repoPath.indexOf("/")+1)+1, repoPath.length()),gitHubBaseURL+"cloudstack", startDate, endDate);
+
+        for(int i=0;i<requiredtags.size();i++){
+            reqtags.add(requiredtags.get(i).getReleaseName());
+        }
+        checkoutAndGenerateCSV(reqtags, repo, git, repoPath);
 
     }
 
@@ -165,12 +178,15 @@ public class ProjectReleases {
         int counter = 0;
         for (Ref tag: alltags){
             String tagName = tag.getName();
+            tagName = getTagName(tagName);
+            System.out.println("tagName = " + getTagName(tagName));
             if(tagName.equals(s)){
                 versionNumber = counter;
             }
             counter += 1;
 
         }
+        System.out.println("versionNumber = " + versionNumber);
         return versionNumber;
 
     }
@@ -218,11 +234,26 @@ public class ProjectReleases {
                     .setName(String.valueOf(s))
                     .setStartPoint(s)
                     .call();
-
         }
         catch (JGitInternalException ex){
             System.out.println("No change in Repository after checkout!");
             return;
+        }
+        catch(CheckoutConflictException ch){
+            git.clean()
+                    .setCleanDirectories( true )
+                    .setForce( true )
+                    .setIgnore( false )
+                    .call();
+            git.reset()
+                    .setMode( ResetCommand.ResetType.SOFT)
+                    .call();
+            System.out.println("Checkout conflict");
+            git.checkout()
+                    .setCreateBranch(true)
+                    .setName(String.valueOf(s))
+                    .setStartPoint(s)
+                    .call();
         }
 
 //        for (String version: s){

@@ -220,7 +220,7 @@ class BugData:
         self.hang_bugs_count = 0
         self.conf_bugs_count = 0
     def getBugsData(self,project,from_date,to_date):
-        project = re.sub(".*/","",project)  #We take just the name of the project
+        # project = re.sub(".*/","",project)  #We take just the name of the project
         project = project.upper()              # convert to capital letters
         url ="https://issues.apache.org/jira/browse/"+project+"-0?jql=project%20%3D%20"+project+"%20AND%20issuetype%20%3D%20Bug%20AND%20created%20>%3D%20"+from_date+"%20AND%20created%20<%3D%20"+to_date+"%20%20ORDER%20BY%20created%20DESC"
         page = requests.get(url)    #request the page
@@ -460,16 +460,10 @@ class BugData:
 
 
 
-    def getDataFromAPI(self, id):
+    def getIssueDescFromAPI(self, issueKey):
         ### To get description and version of an issue
-        # url = "https://hadoop.atlassian.net/rest/api/3/version/"+str(id)
-        # url = "https://hadoop.atlassian.net/rest/api/3/project/hadoop/versions"
-        url = "https://localhost.atlassian.net/rest/api/3/version/"+str(id)
-        # url = "http://developer.atlassian.net/rest/api/2/search?jql=project=HADOOP&fields=description"
-        # url = "http://developer.atlassian.net/rest/api/2/projects"
-        print(url)
-        auth = HTTPBasicAuth("cloudbugs14@example.com", "oV0hTjdAAeGuUlWLHrQkC0AB")
-
+        
+        url = "https://issues.apache.org/jira/rest/api/2/issue/"+issueKey+"?fields=description"
         headers = {
         "Accept": "application/json"
         }
@@ -478,11 +472,10 @@ class BugData:
         "GET",
         url,
         headers=headers,
-        auth=auth
         )
-
-        print(json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": ")))
-        # print(response.text)
+        # response_data = json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": "))
+        response_data = json.loads(response.text)
+        return response_data["fields"]["description"]
 
 
   
@@ -494,9 +487,8 @@ CsvDataList = []
 summary = []
 ### Take issues of all Java projects
 for i in range(len(projects_list)):
-    project_link = "https://github.com/apache/" +projects_list[i]
     obj = BugData()
-    summary.append(obj.getBugsData(project_link, "2018-08-01", "2019-08-31")) 
+    summary.append(obj.getBugsData(projects_list[i], "2018-08-01", "2019-08-31")) 
 for i in range(len(summary)):
     for j in range(len(summary[i])):
         # Prepare csv data
@@ -506,18 +498,41 @@ for i in range(len(summary)):
         bugKey = bugId
         bugTitle = obj.getBugTitle(summary[i][j])
         csvdata.setBugTitle(bugTitle)
-        bugType = obj.getBugType(bugTitle)
+        ### Get description field of the issue
+        desc = obj.getIssueDescFromAPI(bugKey)
+        if desc is None:
+            ### If description is empty, take issue title for bug classification
+            print(bugKey)
+            bugType = obj.getBugType(bugTitle)
+        else:
+            ### If description is empty, take it for bug classification
+            bugType = obj.getBugType(desc)
+        # bugType = obj.getBugType(bugTitle)
         csvdata.setBugType(bugType)
         bugUrl = obj.getBugUrl(bugKey, bugId)
         csvdata.setBugLink(bugUrl)
-        # Get frequency of each bug type
-        csvdata.setConcBugsFrequency(obj.concurrency_bugs_frequency(bugTitle))
-        csvdata.setConfigBugsFrequency(obj.configuration_bugs_frequency(bugTitle))
-        csvdata.setErrBugsFrequency(obj.error_handling_bugs_frequency(bugTitle))
-        csvdata.setHangBugsFrequency(obj.hang_bugs_frequency(bugTitle))
-        csvdata.setOptimBugsFrequency(obj.optimization_bugs_frequency(bugTitle))
-        csvdata.setPerfBugsFrequency(obj.performance_bugs_frequency(bugTitle))
-        CsvDataList.append(csvdata)
+
+        if desc is None: 
+            ### If description is empty, take issue title for bug frequency calculation
+            # Get frequency of each bug type
+            csvdata.setConcBugsFrequency(obj.concurrency_bugs_frequency(bugTitle))
+            csvdata.setConfigBugsFrequency(obj.configuration_bugs_frequency(bugTitle))
+            csvdata.setErrBugsFrequency(obj.error_handling_bugs_frequency(bugTitle))
+            csvdata.setHangBugsFrequency(obj.hang_bugs_frequency(bugTitle))
+            csvdata.setOptimBugsFrequency(obj.optimization_bugs_frequency(bugTitle))
+            csvdata.setPerfBugsFrequency(obj.performance_bugs_frequency(bugTitle))
+            CsvDataList.append(csvdata)
+        else:
+            ### If description is bot empty use it for bug frequency calculation
+                # Get frequency of each bug type
+            csvdata.setConcBugsFrequency(obj.concurrency_bugs_frequency(desc))
+            csvdata.setConfigBugsFrequency(obj.configuration_bugs_frequency(desc))
+            csvdata.setErrBugsFrequency(obj.error_handling_bugs_frequency(desc))
+            csvdata.setHangBugsFrequency(obj.hang_bugs_frequency(desc))
+            csvdata.setOptimBugsFrequency(obj.optimization_bugs_frequency(desc))
+            csvdata.setPerfBugsFrequency(obj.performance_bugs_frequency(desc))
+            CsvDataList.append(csvdata)
+       
 
 
 ## Uncomment the line below to generate csv

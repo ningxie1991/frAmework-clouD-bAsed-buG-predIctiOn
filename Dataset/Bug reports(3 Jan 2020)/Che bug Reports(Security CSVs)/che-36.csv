@@ -1,0 +1,16 @@
+D:\GitHub\Projects\Java\che\multiuser\permission\che-multiuser-permission-workspace\target\classes\org\eclipse\che\multiuser\permission\workspace\server\filters\WorkspacePermissionsFilter.class
+D:\GitHub\Projects\Java\che\multiuser\permission\che-multiuser-permission-workspace\target\classes\org\eclipse\che\multiuser\permission\workspace\server\filters\WorkspaceRemoteSubscriptionPermissionFilter.class
+D:\GitHub\Projects\Java\che\multiuser\permission\che-multiuser-permission-workspace\target\classes\org\eclipse\che\multiuser\permission\workspace\server\jpa\MultiuserWorkspaceJpaModule$1.class
+D:\GitHub\Projects\Java\che\multiuser\permission\che-multiuser-permission-workspace\target\classes\org\eclipse\che\multiuser\permission\workspace\server\jpa\MultiuserWorkspaceJpaModule$2.class
+D:\GitHub\Projects\Java\che\multiuser\permission\che-multiuser-permission-workspace\target\classes\org\eclipse\che\multiuser\permission\workspace\server\jpa\MultiuserWorkspaceJpaModule.class
+D:\GitHub\Projects\Java\che\multiuser\permission\che-multiuser-permission-workspace\target\classes\org\eclipse\che\multiuser\permission\workspace\server\model\impl\WorkerImpl.class
+D:\GitHub\Projects\Java\che\multiuser\permission\che-multiuser-permission-workspace\target\classes\org\eclipse\che\multiuser\permission\workspace\server\model\Worker.class
+D:\GitHub\Projects\Java\che\multiuser\permission\che-multiuser-permission-workspace\target\classes\org\eclipse\che\multiuser\permission\workspace\server\spi\jpa\JpaWorkerDao$RemoveWorkersBeforeUserRemovedEventSubscriber.class
+D:\GitHub\Projects\Java\che\multiuser\permission\che-multiuser-permission-workspace\target\classes\org\eclipse\che\multiuser\permission\workspace\server\spi\jpa\JpaWorkerDao$RemoveWorkersBeforeWorkspaceRemovedEventSubscriber.class
+D:\GitHub\Projects\Java\che\multiuser\permission\che-multiuser-permission-workspace\target\classes\org\eclipse\che\multiuser\permission\workspace\server\spi\jpa\JpaWorkerDao.class
+D:\GitHub\Projects\Java\che\multiuser\permission\che-multiuser-permission-workspace\target\classes\org\eclipse\che\multiuser\permission\workspace\server\spi\jpa\MultiuserJpaWorkspaceDao$RemoveWorkspaceBeforeAccountRemovedEventSubscriber.class
+D:\GitHub\Projects\Java\che\multiuser\permission\che-multiuser-permission-workspace\target\classes\org\eclipse\che\multiuser\permission\workspace\server\spi\jpa\MultiuserJpaWorkspaceDao.class
+D:\GitHub\Projects\Java\che\multiuser\permission\che-multiuser-permission-workspace\target\classes\org\eclipse\che\multiuser\permission\workspace\server\spi\WorkerDao.class
+D:\GitHub\Projects\Java\che\multiuser\permission\che-multiuser-permission-workspace\target\classes\org\eclipse\che\multiuser\permission\workspace\server\WorkspaceApiPermissionsModule.class
+D:\GitHub\Projects\Java\che\multiuser\permission\che-multiuser-permission-workspace\target\classes\org\eclipse\che\multiuser\permission\workspace\server\WorkspaceCreatorPermissionsProvider.class
+D:\GitHub\Projects\Java\che\multiuser\permission\che-multiuser-permission-workspace\target\classes\org\eclipse\che\multiuser\permission\workspace\server\WorkspaceDomain.class

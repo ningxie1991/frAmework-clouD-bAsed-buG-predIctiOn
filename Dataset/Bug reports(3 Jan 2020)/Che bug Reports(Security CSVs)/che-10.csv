@@ -1,0 +1,16 @@
+D:\GitHub\Projects\Java\che\wsmaster\che-core-api-system-shared\target\classes\org\eclipse\che\api\system\shared\dto\SystemEventDto.class
+D:\GitHub\Projects\Java\che\wsmaster\che-core-api-system-shared\target\classes\org\eclipse\che\api\system\shared\dto\SystemServiceEventDto.class
+D:\GitHub\Projects\Java\che\wsmaster\che-core-api-system-shared\target\classes\org\eclipse\che\api\system\shared\dto\SystemServiceItemStoppedEventDto.class
+D:\GitHub\Projects\Java\che\wsmaster\che-core-api-system-shared\target\classes\org\eclipse\che\api\system\shared\dto\SystemStateDto.class
+D:\GitHub\Projects\Java\che\wsmaster\che-core-api-system-shared\target\classes\org\eclipse\che\api\system\shared\dto\SystemStatusChangedEventDto.class
+D:\GitHub\Projects\Java\che\wsmaster\che-core-api-system-shared\target\classes\org\eclipse\che\api\system\shared\event\EventType.class
+D:\GitHub\Projects\Java\che\wsmaster\che-core-api-system-shared\target\classes\org\eclipse\che\api\system\shared\event\service\StoppingSystemServiceEvent.class
+D:\GitHub\Projects\Java\che\wsmaster\che-core-api-system-shared\target\classes\org\eclipse\che\api\system\shared\event\service\SuspendingSystemServiceEvent.class
+D:\GitHub\Projects\Java\che\wsmaster\che-core-api-system-shared\target\classes\org\eclipse\che\api\system\shared\event\service\SystemServiceEvent.class
+D:\GitHub\Projects\Java\che\wsmaster\che-core-api-system-shared\target\classes\org\eclipse\che\api\system\shared\event\service\SystemServiceItemStoppedEvent.class
+D:\GitHub\Projects\Java\che\wsmaster\che-core-api-system-shared\target\classes\org\eclipse\che\api\system\shared\event\service\SystemServiceItemSuspendedEvent.class
+D:\GitHub\Projects\Java\che\wsmaster\che-core-api-system-shared\target\classes\org\eclipse\che\api\system\shared\event\service\SystemServiceStoppedEvent.class
+D:\GitHub\Projects\Java\che\wsmaster\che-core-api-system-shared\target\classes\org\eclipse\che\api\system\shared\event\service\SystemServiceSuspendedEvent.class
+D:\GitHub\Projects\Java\che\wsmaster\che-core-api-system-shared\target\classes\org\eclipse\che\api\system\shared\event\SystemEvent.class
+D:\GitHub\Projects\Java\che\wsmaster\che-core-api-system-shared\target\classes\org\eclipse\che\api\system\shared\event\SystemStatusChangedEvent.class
+D:\GitHub\Projects\Java\che\wsmaster\che-core-api-system-shared\target\classes\org\eclipse\che\api\system\shared\SystemStatus.class
