@@ -3,7 +3,7 @@ package com.mycompany.model;
 public class SecurityBugData {
     String bugName;
     String className;
-    int frequency = 0;
+    int frequency;
 
     public String getBugName() {
         return bugName;
