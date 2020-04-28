@@ -1,0 +1,7 @@
+target
+*.csv
+__MACOSX/GerritDataAnalyzer/._.DS_Store
+ML_Pipeline/Simple_Bug_Prediction_Pipeline(original in folder).R
+DataExtractor/.idea/workspace.xml
+DataExtractor/.idea/workspace.xml
+ASAT/repos(19 March, 2020)/matcha/
