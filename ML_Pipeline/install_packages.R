@@ -1,0 +1,6 @@
+install.packages('ROCR')
+install.packages("DMwR", dep=T)
+install.packages("RWeka")
+install.packages("stringr")
+install.packages("partykit")
+install.packages("gtools")

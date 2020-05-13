@@ -1,20 +1,7 @@
-# install.packages("RWeka")
-# install.packages("stringr")
-# install.packages("partykit")
-# install.packages("DMwR")
-# install.packages("gtools")
-#install.packages("tidyr")
-#install.packages("tidyr")
-#install.packages("readr")
-
-options(java.parameters = "-Xmx2048m")
 
 library(stringr)
-library(RWeka)
 library(partykit)
-# library(tidyr)
-# library(readr)
-# library(purrr)
+library(RWeka)
 
 # import library for resampling with SMOTE technique
 library(DMwR)
@@ -23,25 +10,26 @@ library(DMwR)
 library(gtools)
 
 
-## Project name
-projectname<-"Spark"
+## Provide project name here
+projectname<-"Alluxio"
 
 
-## Path to ML pipeline folder
-pathToMLDirectory<-"D:/Github/BugPrediction/ML_Pipeline/"
-
-
-## Bug percentage criteria
+## Provide bug percentage criteria/ Percentage of bug prone samples in training data files
 bugPercentageCriteria<-10.0
 
 
-## Number of release files taken as test set
+## Provide number of release files to be taken as test set
 testsetReleaseConfig<-3
+
+## Provide directory name containing (integrated) release files (Directory should be inside Metrics_files_for_ML_Prediction directory)
+metricsFilesDirname<-"Alluxio-[CK-Sec-CD metrics]"
+
+## Path to ML pipeline folder
+pathToMLDirectory<-paste(getwd(),"/", sep = "")
 
 
 ## Path to CK metrics files
-CkMetricsFilePath<-paste(pathToMLDirectory,"Metrics files for ML prediction/Java/Spark-[CK metrics]/",sep = "")
-
+CkMetricsFilePath<-paste(pathToMLDirectory,"Metrics_files_for_ML_Prediction/",metricsFilesDirname,"/",sep = "")
 
 
 ## Path to resampling script
@@ -53,7 +41,7 @@ source(paste(pathToMLDirectory,"Bug_Prediction_Pipeline_Logistic.R",sep = ""))
 
 
 ## Path to bug prediction pipeline [J48 model]
-source(paste(pathToMLDirectory,"Bug_Prediction_Pipeline_J48.R",sep = ""))
+source(paste(pathToMLDirectory,"Bug_prediction_Pipeline_J48.R",sep = ""))
 
 
 ## Path to results file generation script

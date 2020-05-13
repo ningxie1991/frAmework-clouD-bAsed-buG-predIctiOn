@@ -62,16 +62,8 @@ def plotHistogram(pathToFile, project_language):
     plt.legend(legend)
     ### Save the histogram/graph on the csv file path
     path, file_name = os.path.split(pathToFile)
-    graphPath = os.path.join(path, 'BugFrequencyGraph.png')
+    filename = 'BugFrequencyGraph-'+project_language+'.png'
+    graphPath = os.path.join(path, filename)
     plt.savefig(graphPath)
     ### Display the histogram
     plt.show()
-
-
-### Path to save CSV file   Same as ### Path of CSV file for graph creation
-pathToFile = "D:/BugFrequencies-C#.csv"
-### Static name of programming language
-### Programming Language for graph plotting
-project_language = "C#"
-
-plotHistogram(pathToFile, project_language)

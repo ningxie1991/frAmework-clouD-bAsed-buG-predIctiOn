@@ -37,23 +37,14 @@ getResampledDataSet<-function(filenames, bugPercentageCriteria, resampledFilenam
     return (c("No",list(trainingSet)))
     
   }else{
+    # Do resampling if bug percentage is below required %
     
-    # Manual Resampling
-    if (bugsInFiles<6){
-      ### We need atleast k+1 bugs in original dataset before resampling (SMOTE parameter k/Nearest neighbours has a default value of 5, we are taking k = 5)
-      for (row in seq(1:(6-bugsInFiles))) {
+    if (bugsInFiles<7){
+      ### We need atleast k+1 bugs in original dataset before resampling (SMOTE parameter k/Nearest neighbours has a default value of 5, we are taking k = 1)
+      for (row in seq(1:7-bugsInFiles)) {
         trainingSet$bug[[row]]<-"yes"
       }
-      print(paste0("Manual resampling on files"))
-      
     }
-    
-    ### Number of yes cases/bugs in training dataset after manual resampling
-    bugsInFiles<-nrow(subset(trainingSet["bug"], bug=="yes"))
-    print(paste0("Bugs in files now: ",bugsInFiles))
-    
-    
-    # Do resampling if bug percentage is below required %
     
     # Total number of yes case/bugs samples needed
     newSamples<-round(((bugPercentageCriteria/100)*totalRecords)-bugsInFiles)
@@ -70,11 +61,11 @@ getResampledDataSet<-function(filenames, bugPercentageCriteria, resampledFilenam
       
       write.csv(as.data.frame(trainingSet), resampledFilename)
       
-      print(paste0("Manual resampling on dataset",bugsInFiles))
+      print(paste0("No resampling is done",bugsInFiles))
       return (c("Yes",list(trainingSet)))
       
     }else{
-      
+        
       print(paste0("Samples needed: ",samplesNeeded))
       trainingSet <- as.data.frame(unclass(trainingSet))
       

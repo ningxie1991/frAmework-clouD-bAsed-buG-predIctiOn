@@ -1,6 +1,8 @@
+### Get Jira issues, classify them and generate CSV file
+
 import time
 import random
-
+import os
 import requests
 import urllib.request
 from bs4 import BeautifulSoup
@@ -21,32 +23,33 @@ from data_extraction.extract_jira_issues import *
 from data.csv_data import CSVData
 from data_extraction.bugs_frequency import *
 from results.generate_frequency_csv import generateCSV
-# from results.plot_histogram import plotHistogram
+from results.plot_histogram import plotHistogram
 
-### To find CSV file encoding (To be worked on later)
-### Please install using "pip install chardet"
-# import chardet
 
 ### REST API imports 
 from requests.auth import HTTPBasicAuth
 
-### Path to save CSV file   Same as ### Path of CSV file for graph creation
-pathToFile = "D:/BugFrequencies-Java.csv"
-### Static name of programming language
+### Name of programming language
 ### Programming Language for graph plotting
 project_language = "Java"
+### Provide file name to for CSV file 
+filename = "BugFrequencies-Java.csv"
 
-# List of projects
+# Provide list of projects on JIRA to fetch issues
 projects_list = ["hadoop","hbase","flume", "cassandra", "zookeeper"]
 
-
-### Main code
+working_dir = os.getcwd()
+if not os.path.exists('output'):
+    os.makedirs('output')
+pathToFile = working_dir + "/output/" + filename
 
 CsvDataList = []
 summary = []
+
+print("Extracting issues..")
 ### Take issues of all Java projects
 for i in range(len(projects_list)):
-    summary.append(getBugsData(projects_list[i], "2017-08-01", "2018-08-31")) 
+    summary.append(getBugsData(projects_list[i], "2018-08-01", "2019-08-31")) 
 for i in range(len(summary)):
     for j in range(len(summary[i])):
         # Prepare csv data
@@ -60,7 +63,6 @@ for i in range(len(summary)):
         desc = getIssueDescFromAPI(bugKey)
         if desc is None:
             ### If description is empty, take issue title for bug classification
-            print(bugKey)
             bugType = getBugType(bugTitle)
         else:
             ### If description is empty, take it for bug classification
@@ -93,11 +95,11 @@ for i in range(len(summary)):
             CsvDataList.append(csvdata)
        
 
-
-## Uncomment the line below to generate csv
 generateCSV(pathToFile, CsvDataList)
 
 ### Plot a histogram using Matplotlib
-# plotHistogram(pathToFile, project_language)
+plotHistogram(pathToFile, project_language)
+
+print("File and graph generated sucessfully.")
 
 
