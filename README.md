@@ -2,7 +2,7 @@
 
 ## Manual build
 
-### Installation Requirements:
+### Installation Requirements for the Dockerized version of the tool:
 
 Manual build will require the following requirements. 
 - Java version 13
