@@ -1,6 +1,6 @@
 import yaml
 import toml
-from model.golangci import GolangCI
+from asat.model.golangci import GolangCI
 
 
 class GolangCIParser:

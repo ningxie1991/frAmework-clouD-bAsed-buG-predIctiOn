@@ -5,3 +5,7 @@ ML_Pipeline/Simple_Bug_Prediction_Pipeline(original in folder).R
 DataExtractor/.idea/workspace.xml
 DataExtractor/.idea/workspace.xml
 ASAT/repos(19 March, 2020)/matcha/
+repos
+.idea
+venv
+__pycache__

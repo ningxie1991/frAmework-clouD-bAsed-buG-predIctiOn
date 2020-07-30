@@ -1,7 +1,7 @@
 import sqlite3
 
-from model.asat import ASAT
-from model.project import Project
+from asat.model.asat import ASAT
+from asat.model.project import Project
 
 
 class DB:

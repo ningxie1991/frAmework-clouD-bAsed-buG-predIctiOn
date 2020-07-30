@@ -4,10 +4,10 @@ import glob
 import subprocess
 import re
 
-from model.asat_usage import ASATUsage
-from model.arg_usage import ArgUsage
-from model.asat import ASAT
-from parsers.golangci_parser import GolangCIParser
+from asat.model.asat_usage import ASATUsage
+from asat.model.arg_usage import ArgUsage
+from asat.model.asat import ASAT
+from asat.parsers.golangci_parser import GolangCIParser
 
 
 class ASATUsageExtractor:

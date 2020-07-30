@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 
-from model.asat_usage import ASATUsage
+from asat.model.asat_usage import ASATUsage
 
 
 @dataclass

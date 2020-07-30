@@ -1,6 +1,6 @@
 from typing import List
 import matplotlib.pyplot as plt
-from model.project import Project
+from asat.model.project import Project
 import numpy as np
 
 

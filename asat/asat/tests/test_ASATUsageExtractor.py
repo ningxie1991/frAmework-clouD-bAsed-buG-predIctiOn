@@ -1,6 +1,6 @@
 from unittest import TestCase
-from parsers.asat_usage_extractor import ASATUsageExtractor as extr
-from model.arg_usage import ArgUsage
+from asat.parsers import ASATUsageExtractor as extr
+from asat.model.arg_usage import ArgUsage
 
 
 class TestASATUsageExtractor(TestCase):

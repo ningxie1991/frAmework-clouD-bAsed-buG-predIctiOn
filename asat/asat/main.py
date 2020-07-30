@@ -1,11 +1,11 @@
 from tqdm import tqdm
 
-from parsers.asat_usage_extractor import ASATUsageExtractor
-from util.downloader import RepoDownloader
-from model.db import DB
-from util.statistics import compute_statistics
+from asat.parsers.asat_usage_extractor import ASATUsageExtractor
+from asat.util.downloader import RepoDownloader
+from asat.model.db import DB
+from asat.util.statistics import compute_statistics
 
-DB_PATH = 'data/projects.sqlite3'
+DB_PATH = 'asat/data/projects.sqlite3'
 REPOS_PATH = 'repos'
 
 db = DB(DB_PATH)

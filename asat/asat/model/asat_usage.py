@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import Optional, Set
-from model.asat import ASAT
-from model.arg_usage import ArgUsage
+from asat.model.asat import ASAT
+from asat.model.arg_usage import ArgUsage
 
 
 @dataclass
