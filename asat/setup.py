@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(name='asat',
       version='0.1',
@@ -7,7 +7,7 @@ setup(name='asat',
       author='Anna Jancso',
       author_email='anna.jancso@uzh.ch',
       license='MIT',
-      packages=['asat'],
+      packages=find_packages(),
       zip_safe=False,
       install_requires=['tqdm', 'matplotlib', 'toml', 'PyYAML']
       )
