@@ -9,3 +9,4 @@ repos
 .idea
 venv
 __pycache__
+*.tar

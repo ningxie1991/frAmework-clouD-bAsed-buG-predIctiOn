@@ -8,7 +8,7 @@ FROM maven:3.6.3
 RUN mkdir -p /BugFrequencies
 
 COPY pom.xml /BugFrequencies/
-COPY .idea/. /BugFrequencies/.idea/
+#COPY .idea/. /BugFrequencies/.idea/
 COPY src/. /BugFrequencies/src/
 
 WORKDIR /BugFrequencies
