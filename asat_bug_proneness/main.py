@@ -34,11 +34,16 @@ beewatch_containers = client.containers.list(all=True, filters={'ancestor': IMAG
 for container in beewatch_containers:
     container.remove(force=True)
 
+arg1 = 'Go'
+arg2 = '/cloud_projects/'
+arg3 = 'flynn'
+
 print('Run new container...')
 container = client.containers.run(
     detach=True,
     image=IMAGE,
-    volumes={REPOS_PATH: {'bind': '/cloud_projects/', 'mode': 'rw'}}
+    volumes={REPOS_PATH: {'bind': arg2, 'mode': 'rw'}},
+    command=[arg1, arg2, arg3]
 )
 
 status = container.status

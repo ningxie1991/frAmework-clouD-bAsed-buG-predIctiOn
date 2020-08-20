@@ -17,6 +17,7 @@ RUN mvn clean install
 ENV CLASSPATH /BugFrequencies/target/*
 
 RUN javac src/main/java/com/analysis/util/BugClassification.java
-ENTRYPOINT java src/main/java/com/analysis/util//BugClassification.java
+CMD ["Python", "F:/cloud_projects/", "arvados-pipelines,colin,neurodocker"]
+ENTRYPOINT ["/usr/bin/java", "src/main/java/com/analysis/util//BugClassification.java"]
 
 

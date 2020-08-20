@@ -79,12 +79,12 @@ public class BugClassification {
 
     public static void main(String[] args) throws ParseException, IOException, GitAPIException {
         BugClassification bugClassification = new BugClassification();
-        String programming_language = "Python";
+        String programming_language = args[0];
         //Path of Cloud repositories cloned on local system. Attach cloud_projects directory as docker volume
         // while executing the docker image (Details in the README file).
-        String repoPath = "F:/cloud_projects/";
+        String repoPath = args[1];
         // Cloud projects list for Python
-        String[] projectNames = new String[] {"arvados-pipelines", "colin", "neurodocker"};
+        String[] projectNames = args[2].split(",");
         // Cloud projects list for C#
 //        String[] projectNames = new String[] {"AElf", "cloudscribe", "dotnet-docs-samples", "duplicati", "google-cloud-dotnet"};
         // Cloud projects list for C++
