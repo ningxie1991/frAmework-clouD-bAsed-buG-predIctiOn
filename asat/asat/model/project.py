@@ -12,3 +12,7 @@ class Project:
     commits: int
     asat_usages: List[ASATUsage]
     is_cloud_app: bool
+
+    @property
+    def name(self) -> str:
+        return self.url.split('/')[-1]
