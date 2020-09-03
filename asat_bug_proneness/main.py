@@ -99,9 +99,10 @@ for project_name in projects:
     project = projects[project_name]
     print(project_name)
     print('Number of ASATs:', len(project.asat_usages))
-    asats_per_category = {c: len(list(asat_usages)) for c, asat_usages in
-                          groupby(project.asat_usages,
-                                  key=lambda d: d.asat.category)}
+    asats_per_category = {asat.category: 0 for asat in asats}
+    for asat_usage in project.asat_usages:
+        category = asat_usage.asat.category
+        asats_per_category[category] += 1
     print('Number of ASATs per category', asats_per_category)
     print('Number of bugs:',
           sum(project.bugs[bug_category] for bug_category in project.bugs))
