@@ -11,12 +11,14 @@ DB_PATH = Path('../asat/asat/data/projects.sqlite3').resolve()
 REPOS_PATH = Path('../asat/repos').resolve()
 
 db = DB(str(DB_PATH))
-projects = db.get_projects()[:2]
+projects = db.get_projects()
 
 downloader = RepoDownloader(str(REPOS_PATH))
 
 for project in tqdm(projects):
     repo_path = downloader.download(project.url)
+
+repo_names = [repo.name for repo in REPOS_PATH.iterdir()]
 
 # get the bugs from BugClassification
 
@@ -36,7 +38,7 @@ for container in beewatch_containers:
 
 arg1 = 'Go'
 arg2 = '/cloud_projects/'
-arg3 = 'flynn'
+arg3 = ','.join(repo_names)
 
 print('Run new container...')
 container = client.containers.run(
