@@ -98,13 +98,20 @@ with tarfile.open('output.tar') as f:
 for project_name in projects:
     project = projects[project_name]
     print(project_name)
+    print('is cloud project:', project.is_cloud_app)
     print('Number of ASATs:', len(project.asat_usages))
     asats_per_category = {asat.category: 0 for asat in asats}
     for asat_usage in project.asat_usages:
         category = asat_usage.asat.category
         asats_per_category[category] += 1
     print('Number of ASATs per category', asats_per_category)
-    print('Number of bugs:',
-          sum(project.bugs[bug_category] for bug_category in project.bugs))
-    print('Number of bugs per category', project.bugs)
+
+    # for some projects no bug counts are extracted?
+    if hasattr(project, 'bugs'):
+        print('Number of bugs:',
+              sum(project.bugs[bug_category] for bug_category in project.bugs))
+        print('Number of bugs per category', project.bugs)
+    else:
+        print('No bug counts extracted!')
+
     print()
