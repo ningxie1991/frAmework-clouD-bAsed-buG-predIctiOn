@@ -22,9 +22,8 @@ of bugs associated with these issues. The script to initiate the issues extracti
 get Issues.py. The issue classification and frequency of the bugs in these issues are performed by
 this script. The following parameters need to be provided in this file.
 
-1. `project_language`: Programming language of the projects.
-2. `filename`: Represent the name of the file that will be generated as output.
-3. `projects_list`: *Python-style list* representing the names of the systems whose JIRA issues need to be fetched.
+1. `filename`: Represent the name of the file that will be generated as output.
+2. `projects_list`: *Python-style list* representing the names of the systems whose JIRA issues need to be fetched.
 
 
 ### Bug Frequency Files & Graphs
@@ -32,43 +31,11 @@ this script. The following parameters need to be provided in this file.
 Bug frequency file and graph will be generated in the **output** directory under the root directory.
 
 
-## Docker Build
-
-1. Clone the repository.
-```sh
- git clone https://github.com/atifghulamnabi/BugPrediction.git
-```
-2. Provide input parameters inside get_Issues.py. 
-3. CD into the directory **JiraParser**.
-4. Build the docker image:
-```sh
- docker build -t image_name .
-```
-4. Run the image.
-```sh
- docker run imageID
-```
-or 
-```sh
- docker run -t image_name
-```
-5. Get the conatiner Id against the image by:
-```sh
- docker ps -a
-```
-6. Copy the output directory (CSV file & graph) from container to local directory.
-```sh
- docker cp containerID:/jiraparser/output /absolute/path/to/local/directory 
-```
-
 ## Manual Build with Python-3
 
 *Note: Should have python 3 installed on the system.*
 
 1. Clone the repository.
-```sh
- git clone https://github.com/atifghulamnabi/BugPrediction.git
-```
 2. Provide input parameters inside get_Issues.py.
 3. CD into the directory **GitIssueParser**.
 4. Install requirements.txt.
