@@ -19,12 +19,13 @@ Extract issue id, title, description, link, bug type, bug frequency for each iss
 
 GitIssueParser directory contains various python scripts to get issues and to plot graphs for frequency
 of bugs associated with these issues. The script to initiate the issues extraction from Git issues is named
-get Issues.py. The issue classification and frequency of the bugs in these issues are performed by
+get_Issues.py. The issue classification and frequency of the bugs in these issues are performed by
 this script. The following parameters need to be provided in this file.
 
 1. `filename`: Represent the name of the file that will be generated as output.
 2. `projects_list`: *Python-style list* representing the names of the systems whose JIRA issues need to be fetched.
 
+You need to provide your Git access token in data_extraction/extract_git_issues.py.
 
 ### Bug Frequency Files & Graphs
 
