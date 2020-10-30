@@ -7,7 +7,7 @@ import json
 from .frequency_data import FrequencyData
 from .bugs_frequency import *
 
-auth_token = "9baaecf2723696413c514aed25d2915be1243c68" # personal access token from github
+auth_token = "" # personal access token from github
 headers = {"Authorization": "token " + auth_token} #headers
 
 #### Class to get issues data, generate CSV file and plot Histogram
