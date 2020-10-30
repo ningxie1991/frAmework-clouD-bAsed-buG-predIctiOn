@@ -25,7 +25,8 @@ this script. The following parameters need to be provided in this file.
 1. `filename`: Represent the name of the file that will be generated as output.
 2. `projects_list`: *Python-style list* representing the names of the systems whose JIRA issues need to be fetched.
 
-You need to provide your Git access token in data_extraction/extract_git_issues.py.
+You need to provide your Git access token in data_extraction/extract_git_issues.py"
+https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token
 
 ### Bug Frequency Files & Graphs
 
